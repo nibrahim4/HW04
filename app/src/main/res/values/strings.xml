@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HW04</string>
+    <string name="btnAddMovie">Add Movie</string>
+    <string name="btnEdit">Edit</string>
+    <string name="btnDeleteMovie">Delete Movie</string>
+    <string name="btnYearList">Show List by Year</string>
+    <string name="btnRatingList">Show List by Rating</string>
+</resources>
