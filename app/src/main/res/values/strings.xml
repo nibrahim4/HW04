@@ -5,4 +5,10 @@
     <string name="btnDeleteMovie">Delete Movie</string>
     <string name="btnYearList">Show List by Year</string>
     <string name="btnRatingList">Show List by Rating</string>
+    <string name="btnCreateMovie">Add Movie</string>
+    <string name="tvName">Name:</string>
+    <string name="etName" />
+    <string name="tvDescription">Description:</string>
+    <string name="tv_Genre">Genre:</string>
+    <string name="tv_Rating">Rating:</string>
 </resources>
