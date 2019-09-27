@@ -1,6 +1,8 @@
 package com.example.hw04;
 
-public class Movie {
+import java.io.Serializable;
+
+public class Movie implements Serializable {
 
     private String _name;
     private String _description;

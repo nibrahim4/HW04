@@ -11,4 +11,18 @@
     <string name="tvDescription">Description:</string>
     <string name="tv_Genre">Genre:</string>
     <string name="tv_Rating">Rating:</string>
+    <string name="hint_year">Year</string>
+    <string name="hint_imdb">IMDB</string>
+    <string name="tv_rating" />
+
+    <string-array name="genreList">
+        <item>Action</item>
+        <item>Animation</item>
+        <item>Comedy</item>
+        <item>Documentary</item>
+        <item>Family</item>
+        <item>Horror</item>
+        <item>Crime</item>
+        <item>Others</item>
+    </string-array>
 </resources>

@@ -10,20 +10,21 @@
         android:id="@+id/btnCreateMovie"
         android:layout_width="208dp"
         android:layout_height="45dp"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"
         android:text="@string/btnCreateMovie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_year" />
+        app:layout_constraintTop_toBottomOf="@+id/et_imdb" />
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="114dp"
-        android:layout_height="33dp"
+        android:layout_width="131dp"
+        android:layout_height="47dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tvName"
         android:textColor="#030101"
         android:textSize="24sp"
@@ -33,19 +34,20 @@
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="237dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="253dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:maxLength="50"
         android:text="@string/etName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="373dp"
-        android:layout_height="54dp"
+        android:layout_width="381dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="@string/tvDescription"
@@ -58,13 +60,14 @@
 
     <EditText
         android:id="@+id/ml_Description"
-        android:layout_width="379dp"
-        android:layout_height="263dp"
+        android:layout_width="386dp"
+        android:layout_height="179dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:maxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
@@ -83,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ml_Description" />
 
     <TextView
-        android:id="@+id/tv_Rating"
+        android:id="@+id/tv_RatingLabel"
         android:layout_width="117dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
@@ -96,27 +99,59 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_Genre" />
 
     <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="236dp"
-        android:layout_height="45dp"
+        android:id="@+id/sb_rating"
+        android:layout_width="189dp"
+        android:layout_height="44dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        android:layout_marginEnd="8dp"
+        android:max="5"
+        android:min="0"
+        app:layout_constraintEnd_toStartOf="@+id/tv_rating"
+        app:layout_constraintTop_toBottomOf="@+id/sp_genre" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sp_genre"
         android:layout_width="232dp"
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
+        android:entries="@array/genreList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ml_Description" />
 
-    <Spinner
-        android:id="@+id/sp_year"
-        android:layout_width="407dp"
-        android:layout_height="42dp"
+    <EditText
+        android:id="@+id/et_year"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
         android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/hint_year"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/sb_rating" />
+
+    <EditText
+        android:id="@+id/et_imdb"
+        android:layout_width="372dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_imdb"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_year" />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/tv_rating"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_genre" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
