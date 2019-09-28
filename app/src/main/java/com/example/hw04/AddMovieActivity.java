@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,8 +11,6 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class AddMovieActivity extends AppCompatActivity {
 
@@ -36,14 +33,14 @@ public class AddMovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_movie);
         setTitle("Add Movie");
 
-        btn_CreateMovie = findViewById(R.id.btnCreateMovie);
-        et_Name = findViewById(R.id.etName);
-        ml_description = findViewById(R.id.ml_Description);
-        sp_genre = findViewById(R.id.sp_genre);
-        sb_rating = findViewById(R.id.sb_rating);
-        et_year = findViewById(R.id.et_year);
-        et_imdb = findViewById(R.id.et_imdb);
-        tv_rating = findViewById(R.id.tv_rating);
+        btn_CreateMovie = findViewById(R.id.btn_SaveChanges);
+        et_Name = findViewById(R.id.etName_Edit);
+        ml_description = findViewById(R.id.ml_Description_Edit);
+        sp_genre = findViewById(R.id.sp_genre_Edit);
+        sb_rating = findViewById(R.id.sb_rating_Edit);
+        et_year = findViewById(R.id.et_year_Edit);
+        et_imdb = findViewById(R.id.et_imdb_Edit);
+        tv_rating = findViewById(R.id.tv_rating_Edit);
 
 
         final String[] selectedGenre = {""};
@@ -89,21 +86,16 @@ public class AddMovieActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                 //extrasFromMain = getIntent().getExtras().getBundle(MainActivity.MOVIE_KEY);
-
 
                 String enteredName = et_Name.getText().toString();
                 String enteredDescription = ml_description.getText().toString();
                 String enteredYear = et_year.getText().toString();
                 String enteredIMDB = et_imdb.getText().toString();
                 String selectedRating = tv_rating.getText().toString();
+                int movieId =  0+ (int)(Math.random() * ((20 - 0) + 1));
 
-                Movie movie = new Movie(enteredName, enteredDescription, selectedGenre[0], Integer.parseInt(selectedRating), Integer.parseInt(enteredYear), enteredIMDB);
-               // moviesFromAdd.add(movie);
+                Movie movie = new Movie(movieId, enteredName, enteredDescription, selectedGenre[0], Integer.parseInt(selectedRating), Integer.parseInt(enteredYear), enteredIMDB);
 
-                //for(int i=0; i<extrasFromAddMovie.size(); i++){
-                  //  Log.d("Test", "onClick: " + extrasFromAddMovie.get(i).getName());
-                //}
                 Bundle sentData = new Bundle();
                 sentData.putSerializable("addedMovie",movie);
                 Intent intent = new Intent(AddMovieActivity.this, MainActivity.class);

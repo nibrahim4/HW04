@@ -14,6 +14,13 @@
     <string name="hint_year">Year</string>
     <string name="hint_imdb">IMDB</string>
     <string name="tv_rating" />
+    <string name="btn_SaveChanges">Save Changes</string>
+    <string name="tv_NameEdit">Name</string>
+    <string name="etName_Edit" />
+    <string name="tvDescription_Edit" >Description:</string>
+    <string name="tv_Genre_Edit">Genre:</string>
+    <string name="tv_Rating_Edit">Rating:</string>
+    <string name="tv_rating_Edit" />
 
     <string-array name="genreList">
         <item>Action</item>

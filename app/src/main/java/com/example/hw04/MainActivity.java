@@ -55,19 +55,22 @@ public class MainActivity extends AppCompatActivity {
                     builder.setTitle("Pick a Movie");
                     String[] movieArray = new String[movieList.size()];
                     nameList.clear();
-                    
+
                     for (int i=0; i<movieList.size(); i++){
                         nameList.add(movieList.get(i).getName());
                     }
 
                     movieArray = nameList.toArray(movieArray);
 
-                    final String[] finalMovieArray = movieArray;
+                    //final String[] finalMovieArray = movieArray;
                     builder.setItems(movieArray, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Log.d("test", "onClick: " + finalMovieArray[which]);
-
+                            Intent intentToEdit = new Intent(MainActivity.this, EditActivity.class);
+                            Bundle sentData = new Bundle();
+                            sentData.putSerializable("selectedMovie", movieList.get(which));
+                            intentToEdit.putExtra(MainActivity.MOVIE_KEY, sentData);
+                            startActivityForResult(intentToEdit,MainActivity.REQ_CODE);
                         }
                     });
 
@@ -88,17 +91,21 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode==REQ_CODE){
             if(resultCode==RESULT_OK){
 
-                Log.d("TEST", "onActivityResult: " + data);
                 extrasFromAddMovie = data.getExtras().getBundle(MOVIE_KEY);
 
                 movie = (Movie) extrasFromAddMovie.getSerializable("addedMovie");
 
-                movieList.add(movie);
-
-
-                for (int i =0; i<movieList.size(); i++){
-                    Log.d("test", "onActivityResult: "+ movieList.get(i).getName());
+                if(movieList.size() > 0 && movieList != null){
+                    for (int i =0; i<movieList.size(); i++){
+                        if (movieList.get(i).getId() == movie.getId()){
+                            movieList.set(i,movie);
+                        }
+                        Log.d("test", "onActivityResult: "+ movieList.get(i).getName());
+                    }
+                }else{
+                    movieList.add(movie);
                 }
+
             }
         }
     }

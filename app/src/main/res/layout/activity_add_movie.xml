@@ -7,7 +7,7 @@
     tools:context=".AddMovieActivity">
 
     <Button
-        android:id="@+id/btnCreateMovie"
+        android:id="@+id/btn_SaveChanges"
         android:layout_width="208dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
@@ -17,10 +17,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_imdb" />
+        app:layout_constraintTop_toBottomOf="@+id/et_imdb_Edit" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvName_Edit"
         android:layout_width="131dp"
         android:layout_height="47dp"
         android:layout_marginStart="16dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etName_Edit"
         android:layout_width="253dp"
         android:layout_height="51dp"
         android:layout_marginTop="16dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvDescription_Edit"
         android:layout_width="381dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -56,10 +56,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        app:layout_constraintTop_toBottomOf="@+id/etName_Edit" />
 
     <EditText
-        android:id="@+id/ml_Description"
+        android:id="@+id/ml_Description_Edit"
         android:layout_width="386dp"
         android:layout_height="179dp"
         android:layout_marginStart="16dp"
@@ -71,10 +71,10 @@
         android:maxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription_Edit" />
 
     <TextView
-        android:id="@+id/tv_Genre"
+        android:id="@+id/tv_Genre_Edit"
         android:layout_width="123dp"
         android:layout_height="41dp"
         android:layout_marginStart="20dp"
@@ -84,10 +84,10 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ml_Description" />
+        app:layout_constraintTop_toBottomOf="@+id/ml_Description_Edit" />
 
     <TextView
-        android:id="@+id/tv_RatingLabel"
+        android:id="@+id/tv_RatingLabel_Edit"
         android:layout_width="117dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
@@ -97,30 +97,30 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Genre" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Genre_Edit" />
 
     <SeekBar
-        android:id="@+id/sb_rating"
+        android:id="@+id/sb_rating_Edit"
         android:layout_width="189dp"
         android:layout_height="44dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:max="5"
         android:min="0"
-        app:layout_constraintEnd_toStartOf="@+id/tv_rating"
-        app:layout_constraintTop_toBottomOf="@+id/sp_genre" />
+        app:layout_constraintEnd_toStartOf="@+id/tv_rating_Edit"
+        app:layout_constraintTop_toBottomOf="@+id/sp_genre_Edit" />
 
     <Spinner
-        android:id="@+id/sp_genre"
+        android:id="@+id/sp_genre_Edit"
         android:layout_width="232dp"
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
         android:entries="@array/genreList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ml_Description" />
+        app:layout_constraintTop_toBottomOf="@+id/ml_Description_Edit" />
 
     <EditText
-        android:id="@+id/et_year"
+        android:id="@+id/et_year_Edit"
         android:layout_width="379dp"
         android:layout_height="52dp"
         android:layout_marginTop="20dp"
@@ -130,10 +130,10 @@
         android:maxLength="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sb_rating" />
+        app:layout_constraintTop_toBottomOf="@+id/sb_rating_Edit" />
 
     <EditText
-        android:id="@+id/et_imdb"
+        android:id="@+id/et_imdb_Edit"
         android:layout_width="372dp"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
@@ -142,10 +142,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_year" />
+        app:layout_constraintTop_toBottomOf="@+id/et_year_Edit" />
 
     <TextView
-        android:id="@+id/tv_rating"
+        android:id="@+id/tv_rating_Edit"
         android:layout_width="55dp"
         android:layout_height="40dp"
         android:layout_marginTop="17dp"
@@ -154,6 +154,6 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_genre" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_genre_Edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
