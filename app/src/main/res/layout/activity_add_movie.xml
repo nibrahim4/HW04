@@ -66,6 +66,7 @@
         android:layout_marginTop="19dp"
         android:ems="10"
         android:gravity="start|top"
+        android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:maxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
