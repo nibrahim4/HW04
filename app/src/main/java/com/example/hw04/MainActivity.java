@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Button btn_AddMovie;
     public Button btn_EditMovie;
+    public Button btn_DeleteMovie;
     public ArrayList<Movie> movieList = new ArrayList<Movie>();
     public ArrayList<String> nameList = new ArrayList<String>();
     public static final String MOVIE_KEY = "movies";
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         btn_AddMovie = findViewById(R.id.btnAddMovie);
-        btn_EditMovie = findViewById(R.id.btnEdit);
-
         btn_AddMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btn_EditMovie = findViewById(R.id.btnEdit);
         btn_EditMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +79,39 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "There are no movies to edit.", Toast.LENGTH_LONG).show();
                 }
 
+            }
+        });
+
+        btn_DeleteMovie = findViewById(R.id.btnDeleteMovie);
+        btn_DeleteMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (movieList.size() > 0 && movieList != null){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Pick a Movie");
+                    String[] movieArray = new String[movieList.size()];
+                    nameList.clear();
+
+                    for (int i=0; i<movieList.size(); i++){
+                        nameList.add(movieList.get(i).getName());
+                    }
+
+                    movieArray = nameList.toArray(movieArray);
+
+                    builder.setItems(movieArray, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                           String movieName =  movieList.get(which).getName();
+                            movieList.remove(which);
+                            Toast.makeText(MainActivity.this, "This movie: " + movieName + " was successfully deleted.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }else  {
+                    Toast.makeText(MainActivity.this, "There are no movies to delete.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

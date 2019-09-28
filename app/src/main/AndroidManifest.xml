@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".MoviesbyRatingActivity"></activity>
+        <activity android:name=".MoviesbyYearActivity" />
+        <activity android:name=".EditActivity" />
         <activity android:name=".AddMovieActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
