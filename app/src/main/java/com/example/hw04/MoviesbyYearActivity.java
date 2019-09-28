@@ -10,5 +10,6 @@ public class MoviesbyYearActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moviesby_year);
+        setTitle("Movies by Year");
     }
 }

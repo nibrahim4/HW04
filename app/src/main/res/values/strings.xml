@@ -21,6 +21,22 @@
     <string name="tv_Genre_Edit">Genre:</string>
     <string name="tv_Rating_Edit">Rating:</string>
     <string name="tv_rating_Edit" />
+    <string name="tv_moviesByYearTitle">Movies by Year</string>
+    <string name="tv_TitleLabel_Year">Title:</string>
+    <string name="tv_movieName_Year" />
+    <string name="tv_DescriptionLabel_Year">Description:</string>
+    <string name="tv_description_Year" />
+    <string name="tv_GenreLabel_Year">Genre:</string>
+    <string name="tv_RatingLabel_Year">Rating:</string>
+    <string name="tv_YearLabel_Year">Year:</string>
+    <string name="tv_RatingLabel_Year">Rating:</string>
+    <string name="tv_IMDBLabel_Year">IMDB:</string>
+    <string name="tv_genreValue_year" />
+    <string name="tv_ratingValue_Year" />
+    <string name="tv_yearValue_Year" />
+    <string name="tv_ratingsValue_Year" />
+    <string name="tv_imdbValue_Year" />
+    <string name="btn_finish_year">Finish</string>
 
     <string-array name="genreList">
         <item>Action</item>
