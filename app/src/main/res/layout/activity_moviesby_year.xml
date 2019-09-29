@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="239dp"
-        android:layout_height="54dp"
+        android:layout_width="249dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:text="@string/tv_moviesByYearTitle"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +24,11 @@
         android:id="@+id/tv_TitleLabel_Year"
         android:layout_width="84dp"
         android:layout_height="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/tv_TitleLabel_Year"
         android:textColor="#0F0D0D"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -39,6 +40,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="@string/tv_movieName_Year"
+        android:textColor="#050202"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_TitleLabel_Year"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -47,22 +49,24 @@
         android:id="@+id/tv_DescriptionLabel_Year"
         android:layout_width="254dp"
         android:layout_height="44dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="18dp"
         android:text="@string/tv_DescriptionLabel_Year"
         android:textColor="#050404"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_movieName_Year" />
 
     <TextView
         android:id="@+id/tv_description_Year"
-        android:layout_width="408dp"
-        android:layout_height="175dp"
+        android:layout_width="384dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:lines="10"
         android:text="@string/tv_description_Year"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#030101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_DescriptionLabel_Year" />
 
@@ -70,24 +74,25 @@
         android:id="@+id/tv_GenreLabel_Year"
         android:layout_width="107dp"
         android:layout_height="44dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/tv_GenreLabel_Year"
         android:textColor="#110F0F"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_Year" />
 
     <TextView
-        android:id="@+id/tv_ratingLabel_year"
+        android:id="@+id/tv_ratingLabel_ByYear"
         android:layout_width="103dp"
         android:layout_height="38dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/tv_RatingLabel_Year"
+        android:text="@string/tv_ratingValue_ByYear"
         android:textColor="#030202"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_ratingValue_Year"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_GenreLabel_Year" />
 
@@ -95,33 +100,38 @@
         android:id="@+id/tv_YearLabel_Year"
         android:layout_width="105dp"
         android:layout_height="38dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_YearLabel_Year"
         android:textColor="#030202"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ratingLabel_year" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ratingLabel_ByYear" />
 
     <TextView
         android:id="@+id/tv_IMDBLabel_Year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="@string/tv_IMDBLabel_Year"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_YearLabel_Year" />
 
     <TextView
         android:id="@+id/tv_genreValue_Year"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="259dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/tv_genreValue_year"
+        android:textColor="#FC090303"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_GenreLabel_Year"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_Year" />
 
@@ -129,18 +139,24 @@
         android:id="@+id/tv_ratingValue_Year"
         android:layout_width="254dp"
         android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/tv_ratingValue_Year"
+        android:textColor="#E8050303"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ratingLabel_ByYear"
         app:layout_constraintTop_toBottomOf="@+id/tv_genreValue_Year" />
 
     <TextView
         android:id="@+id/tv_yearValue_Year"
-        android:layout_width="262dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="26dp"
+        android:layout_width="252dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/tv_yearValue_Year"
+        android:textColor="#020101"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_YearLabel_Year"
         app:layout_constraintTop_toBottomOf="@+id/tv_ratingValue_Year" />
@@ -149,9 +165,11 @@
         android:id="@+id/tv_imdbValue_Year"
         android:layout_width="396dp"
         android:layout_height="46dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tv_imdbValue_Year"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#070303"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Finish_Year"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_IMDBLabel_Year" />
 
@@ -159,16 +177,17 @@
         android:id="@+id/btn_Finish_Year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/btn_finish_year"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="146dp" />
+        app:layout_constraintEnd_toStartOf="@+id/iv_next"
+        app:layout_constraintStart_toEndOf="@+id/iv_previous" />
 
     <ImageView
         android:id="@+id/iv_first"
         android:layout_width="66dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/first" />
@@ -178,7 +197,7 @@
         android:layout_width="66dp"
         android:layout_height="49dp"
         android:layout_marginStart="3dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_first"
         app:srcCompat="@drawable/previous" />
@@ -188,7 +207,7 @@
         android:layout_width="66dp"
         android:layout_height="49dp"
         android:layout_marginEnd="14dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_last"
         app:srcCompat="@drawable/next" />
@@ -197,8 +216,8 @@
         android:id="@+id/tv_last"
         android:layout_width="66dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/last"
-        tools:layout_editor_absoluteX="325dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/last" />
 </androidx.constraintlayout.widget.ConstraintLayout>

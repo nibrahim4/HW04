@@ -21,13 +21,14 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_AddMovie;
     public Button btn_EditMovie;
     public Button btn_DeleteMovie;
+    public Button btn_MoviesByYear;
     public ArrayList<Movie> movieList = new ArrayList<Movie>();
     public ArrayList<String> nameList = new ArrayList<String>();
     public static final String MOVIE_KEY = "movies";
     public static final int REQ_CODE = 5;
     public Bundle extrasFromAddMovie = new Bundle();
     public Movie movie;
-
+    public boolean isAddButtonClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btn_AddMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isAddButtonClicked = true;
                 Intent intentToAddMovie = new Intent(MainActivity.this, AddMovieActivity.class);
                 startActivityForResult(intentToAddMovie, REQ_CODE);
             }
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btn_EditMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                isAddButtonClicked = false;
                 if (movieList.size() > 0 && movieList != null){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle("Pick a Movie");
@@ -115,6 +117,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_MoviesByYear = findViewById(R.id.btnYearList);
+        btn_MoviesByYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent implicitIntent = new Intent("android.intent.action.ACTION-VIEW");
+                implicitIntent.putExtra(Intent.EXTRA_TEXT, movieList);
+                implicitIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivity(implicitIntent);
+            }
+        });
+
     }
 
     @Override
@@ -127,15 +140,18 @@ public class MainActivity extends AppCompatActivity {
 
                 movie = (Movie) extrasFromAddMovie.getSerializable("addedMovie");
 
-                if(movieList.size() > 0 && movieList != null){
+                if(isAddButtonClicked){
+                    movieList.add(movie);
+                    Log.d("test", "Movie Added: "+ movie.getName());
+                }else{
                     for (int i =0; i<movieList.size(); i++){
+
                         if (movieList.get(i).getId() == movie.getId()){
+                            Log.d("test", "Movie Updated: "+ movieList.get(i).getId());
+                            Log.d("test", "Movie Updated: "+ movie.getId());
                             movieList.set(i,movie);
                         }
-                        Log.d("test", "onActivityResult: "+ movieList.get(i).getName());
                     }
-                }else{
-                    movieList.add(movie);
                 }
 
             }

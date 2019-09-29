@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MoviesbyRatingActivity"></activity>
-        <activity android:name=".MoviesbyYearActivity" />
+        <activity android:name=".MoviesbyYearActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.ACTION-VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
         <activity android:name=".EditActivity" />
         <activity android:name=".AddMovieActivity" />
         <activity android:name=".MainActivity">

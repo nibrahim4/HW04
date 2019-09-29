@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddMovieActivity extends AppCompatActivity {
 
@@ -23,9 +24,6 @@ public class AddMovieActivity extends AppCompatActivity {
     public EditText et_imdb;
     public SeekBar sb_rating;
     public TextView tv_rating;
-    public Bundle extrasFromAddMovie;
-    //public ArrayList<Movie> moviesFromAdd = new ArrayList<Movie>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,23 +84,54 @@ public class AddMovieActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                boolean isErrorThrown = false;
 
                 String enteredName = et_Name.getText().toString();
                 String enteredDescription = ml_description.getText().toString();
                 String enteredYear = et_year.getText().toString();
                 String enteredIMDB = et_imdb.getText().toString();
                 String selectedRating = tv_rating.getText().toString();
-                int movieId =  0+ (int)(Math.random() * ((20 - 0) + 1));
 
-                Movie movie = new Movie(movieId, enteredName, enteredDescription, selectedGenre[0], Integer.parseInt(selectedRating), Integer.parseInt(enteredYear), enteredIMDB);
 
-                Bundle sentData = new Bundle();
-                sentData.putSerializable("addedMovie",movie);
-                Intent intent = new Intent(AddMovieActivity.this, MainActivity.class);
-                intent.putExtra(MainActivity.MOVIE_KEY, sentData);
+                if(enteredName.equals("")){
+                    et_Name.setError("Please enter a valid name.");
+                    isErrorThrown = true;
+                }
 
-                setResult(AddMovieActivity.RESULT_OK, intent);
-                finish();
+                if(enteredDescription.equals("")){
+                    ml_description.setError("Please enter a valid description");
+                    isErrorThrown = true;
+                }
+
+                if(enteredYear.equals("") || enteredYear.length() < 4 ){
+                    et_year.setError("Year must have 4 characters.");
+                    isErrorThrown = true;
+                }
+
+                if (enteredIMDB.equals("")){
+                    et_imdb.setError("Please enter a valid IMDB.");
+                    isErrorThrown = true;
+                }
+
+                if (selectedRating.equals("") || selectedRating == null || selectedRating.equals("0")){
+                    Toast.makeText(AddMovieActivity.this, "Please select a rating!", Toast.LENGTH_LONG).show();
+                    isErrorThrown = true;
+                }
+
+                if(!isErrorThrown){
+                    int movieId =  0+ (int)(Math.random() * ((20 - 0) + 1));
+
+                    Movie movie = new Movie(movieId, enteredName, enteredDescription, selectedGenre[0], Integer.parseInt(selectedRating), Integer.parseInt(enteredYear), enteredIMDB);
+
+                    Bundle sentData = new Bundle();
+                    sentData.putSerializable("addedMovie",movie);
+                    Intent intent = new Intent(AddMovieActivity.this, MainActivity.class);
+                    intent.putExtra(MainActivity.MOVIE_KEY, sentData);
+
+                    setResult(AddMovieActivity.RESULT_OK, intent);
+                    finish();
+                }
+
             }
         });
     }

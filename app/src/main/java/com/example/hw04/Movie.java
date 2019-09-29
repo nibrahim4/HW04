@@ -1,8 +1,9 @@
 package com.example.hw04;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-public class Movie implements Serializable {
+public class Movie implements Serializable{
 
     private int _id;
     private String _name;
@@ -93,3 +94,4 @@ public class Movie implements Serializable {
     }
 
 }
+

@@ -29,7 +29,6 @@
     <string name="tv_GenreLabel_Year">Genre:</string>
     <string name="tv_RatingLabel_Year">Rating:</string>
     <string name="tv_YearLabel_Year">Year:</string>
-    <string name="tv_RatingLabel_Year">Rating:</string>
     <string name="tv_IMDBLabel_Year">IMDB:</string>
     <string name="tv_genreValue_year" />
     <string name="tv_ratingValue_Year" />
@@ -37,6 +36,7 @@
     <string name="tv_ratingsValue_Year" />
     <string name="tv_imdbValue_Year" />
     <string name="btn_finish_year">Finish</string>
+    <string name="tv_ratingValue_ByYear">Rating:</string>
 
     <string-array name="genreList">
         <item>Action</item>
