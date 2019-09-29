@@ -209,11 +209,11 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_last"
+        app:layout_constraintEnd_toStartOf="@+id/iv_last"
         app:srcCompat="@drawable/next" />
 
     <ImageView
-        android:id="@+id/tv_last"
+        android:id="@+id/iv_last"
         android:layout_width="66dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"

@@ -121,10 +121,15 @@ public class MainActivity extends AppCompatActivity {
         btn_MoviesByYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent implicitIntent = new Intent("android.intent.action.ACTION-VIEW");
-                implicitIntent.putExtra(Intent.EXTRA_TEXT, movieList);
-                implicitIntent.addCategory(Intent.CATEGORY_DEFAULT);
-                startActivity(implicitIntent);
+                if(movieList.size() > 0){
+                    Intent implicitIntent = new Intent("android.intent.action.ACTION-VIEW");
+                    implicitIntent.putExtra(Intent.EXTRA_TEXT, movieList);
+                    implicitIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                    startActivity(implicitIntent);
+                }else{
+                    Toast.makeText(MainActivity.this, "There are no movies to show.", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

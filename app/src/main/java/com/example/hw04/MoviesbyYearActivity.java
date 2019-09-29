@@ -85,6 +85,29 @@ public class MoviesbyYearActivity extends AppCompatActivity {
                 }
             });
 
+            iv_last = findViewById(R.id.iv_last);
+            iv_last.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    counter = moviesFromMain.size()-1;
+                   setFieldsForMovie(moviesFromMain.size()-1);
+                }
+            });
+
+            iv_previous = findViewById(R.id.iv_previous);
+            iv_previous.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    counter -= 1;
+                    try {
+                        setFieldsForMovie(counter);
+                    }catch(Exception e){
+                        counter =moviesFromMain.size() -1;
+                        setFieldsForMovie(counter);
+                    }
+                }
+            });
+
         }else{
             Toast.makeText(MoviesbyYearActivity.this, "There are no movies in the list. ", Toast.LENGTH_SHORT).show();
         }
