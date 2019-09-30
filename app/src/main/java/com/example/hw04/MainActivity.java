@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_EditMovie;
     public Button btn_DeleteMovie;
     public Button btn_MoviesByYear;
+    public Button btn_MoviesByRating;
     public ArrayList<Movie> movieList = new ArrayList<Movie>();
     public ArrayList<String> nameList = new ArrayList<String>();
     public static final String MOVIE_KEY = "movies";
@@ -130,6 +131,21 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "There are no movies to show.", Toast.LENGTH_LONG).show();
                 }
 
+            }
+        });
+
+        btn_MoviesByRating = findViewById(R.id.btnRatingList);
+        btn_MoviesByRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(movieList.size() > 0){
+                    Intent implicitIntent = new Intent("android.intent.action.ACTION-SHOW");
+                    implicitIntent.putExtra(Intent.EXTRA_TEXT, movieList);
+                    implicitIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                    startActivity(implicitIntent);
+                }else{
+                    Toast.makeText(MainActivity.this, "There are no movies to show.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

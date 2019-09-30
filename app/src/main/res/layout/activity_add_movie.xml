@@ -68,7 +68,7 @@
         android:gravity="start|top"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
-        android:maxLength="100"
+        android:maxLength="1000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription_Edit" />
@@ -155,5 +155,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_genre_Edit" />
+
+    <TextView
+        android:id="@+id/tv_hidden"
+        android:layout_width="231dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/tv_hidden"
+        app:layout_constraintBottom_toTopOf="@+id/sb_rating_Edit"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

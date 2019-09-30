@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,6 +13,10 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddMovieActivity extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class AddMovieActivity extends AppCompatActivity {
     public EditText et_imdb;
     public SeekBar sb_rating;
     public TextView tv_rating;
+    public TextView tv_hidden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +45,9 @@ public class AddMovieActivity extends AppCompatActivity {
         et_year = findViewById(R.id.et_year_Edit);
         et_imdb = findViewById(R.id.et_imdb_Edit);
         tv_rating = findViewById(R.id.tv_rating_Edit);
-
+        tv_hidden = findViewById(R.id.tv_hidden);
 
         final String[] selectedGenre = {""};
-
-
-
-
-
 
         sb_rating.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -67,7 +68,8 @@ public class AddMovieActivity extends AppCompatActivity {
         sp_genre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-              selectedGenre[0] = sp_genre.getSelectedItem().toString();
+                selectedGenre[0] = sp_genre.getSelectedItem().toString();
+
             }
 
             @Override
@@ -92,8 +94,11 @@ public class AddMovieActivity extends AppCompatActivity {
                 String enteredIMDB = et_imdb.getText().toString();
                 String selectedRating = tv_rating.getText().toString();
 
+                Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 
-                if(enteredName.equals("")){
+                boolean specialCharDetected = regex.matcher(enteredName).find();
+
+                if(enteredName.equals("") || specialCharDetected){
                     et_Name.setError("Please enter a valid name.");
                     isErrorThrown = true;
                 }
@@ -117,9 +122,16 @@ public class AddMovieActivity extends AppCompatActivity {
                     Toast.makeText(AddMovieActivity.this, "Please select a rating!", Toast.LENGTH_LONG).show();
                     isErrorThrown = true;
                 }
+                Log.d("TEST", "Genre: " + selectedGenre[0]);
+                if(selectedGenre[0].equals("Select")){
+                    isErrorThrown = true;
+                    tv_hidden.setError("Please select a genre");
+                }
 
-                if(!isErrorThrown){
-                    int movieId =  0+ (int)(Math.random() * ((20 - 0) + 1));
+                if(!isErrorThrown ){
+                    int movieId =  Movie.createMovieId();
+
+                        Log.d("TEST", "Movie Id " + movieId);
 
                     Movie movie = new Movie(movieId, enteredName, enteredDescription, selectedGenre[0], Integer.parseInt(selectedRating), Integer.parseInt(enteredYear), enteredIMDB);
 
@@ -131,7 +143,6 @@ public class AddMovieActivity extends AppCompatActivity {
                     setResult(AddMovieActivity.RESULT_OK, intent);
                     finish();
                 }
-
             }
         });
     }

@@ -12,6 +12,7 @@ public class Movie implements Serializable{
     private int _rating;
     private int _year ;
     private String _imbd;
+    private static int _counter =0;
 
     public String getName() {
         return _name;
@@ -91,6 +92,10 @@ public class Movie implements Serializable{
         this._rating = rating;
         this._year = year;
         this._imbd = imbd;
+    }
+
+    public static int createMovieId(){
+        return _counter +=1;
     }
 
 }

@@ -2,9 +2,7 @@ package com.example.hw04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -45,12 +42,12 @@ public class MoviesbyYearActivity extends AppCompatActivity {
         extrasFromMain = getIntent().getExtras();
         moviesFromMain = (ArrayList<Movie>) extrasFromMain.getSerializable(EXTRA_TEXT);
 
-        tv_titleValue_byYear = findViewById(R.id.tv_movieName_Year);
-        tv_descriptionValue_byYear = findViewById(R.id.tv_description_Year);
-        tv_genreValue_byYear = findViewById(R.id.tv_genreValue_Year);
-        tv_imdbValue_byYear = findViewById(R.id.tv_imdbValue_Year);
-        tv_ratingValue_byYear = findViewById(R.id.tv_ratingValue_Year);
-        tv_yearValue_byYear = findViewById(R.id.tv_yearValue_Year);
+        tv_titleValue_byYear = findViewById(R.id.tv_movieName_byRating);
+        tv_descriptionValue_byYear = findViewById(R.id.ml_descriptionValue_byRating);
+        tv_genreValue_byYear = findViewById(R.id.tv_genreValue_byRating);
+        tv_imdbValue_byYear = findViewById(R.id.tv_IMDBValue_byRating);
+        tv_ratingValue_byYear = findViewById(R.id.tv_ratingValue_byRating);
+        tv_yearValue_byYear = findViewById(R.id.tv_yearValue_byRating);
 
         if (moviesFromMain.size() > 0){
             Collections.sort(moviesFromMain, new Comparator<Movie>() {
@@ -62,7 +59,7 @@ public class MoviesbyYearActivity extends AppCompatActivity {
 
             setFieldsForMovie(0);
 
-            iv_first = findViewById(R.id.iv_first);
+            iv_first = findViewById(R.id.iv_first_byRating);
             iv_first.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -71,7 +68,7 @@ public class MoviesbyYearActivity extends AppCompatActivity {
                 }
             });
 
-            iv_next = findViewById(R.id.iv_next);
+            iv_next = findViewById(R.id.iv_next_byRating);
             iv_next.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -85,7 +82,7 @@ public class MoviesbyYearActivity extends AppCompatActivity {
                 }
             });
 
-            iv_last = findViewById(R.id.iv_last);
+            iv_last = findViewById(R.id.iv_last_byRating);
             iv_last.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -94,7 +91,7 @@ public class MoviesbyYearActivity extends AppCompatActivity {
                 }
             });
 
-            iv_previous = findViewById(R.id.iv_previous);
+            iv_previous = findViewById(R.id.iv_previous_byRating);
             iv_previous.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -116,7 +113,7 @@ public class MoviesbyYearActivity extends AppCompatActivity {
 
 
 
-        btn_finish_byYear = findViewById(R.id.btn_Finish_Year);
+        btn_finish_byYear = findViewById(R.id.btn_Finish_byRating);
         btn_finish_byYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,11 +124,13 @@ public class MoviesbyYearActivity extends AppCompatActivity {
     }
 
     public void setFieldsForMovie(int index) {
+        String rating = moviesFromMain.get(index).getRating() + "/5";
+
         tv_titleValue_byYear.setText(moviesFromMain.get(index).getName());
         tv_descriptionValue_byYear.setText(moviesFromMain.get(index).getDescription());
         tv_genreValue_byYear.setText(moviesFromMain.get(index).getGenre());
         tv_imdbValue_byYear.setText(moviesFromMain.get(index).getImbd());
-        tv_ratingValue_byYear.setText(Integer.toString(moviesFromMain.get(index).getRating()));
+        tv_ratingValue_byYear.setText(rating);
         tv_yearValue_byYear.setText(Integer.toString(moviesFromMain.get(index).getYear()));
     }
 }

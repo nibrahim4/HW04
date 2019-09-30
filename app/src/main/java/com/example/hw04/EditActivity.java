@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class EditActivity extends AppCompatActivity {
     public SeekBar sb_Rating_Edit;
     public Spinner sp_Genre_Edit;
     public Button btn_SaveChanges;
+    public boolean isErrorThrown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,20 +90,59 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                selectedMovie.setName(et_Name_Edit.getText().toString());
-                selectedMovie.setDescription(ml_Description_Edit.getText().toString());
-                selectedMovie.setYear(Integer.parseInt(et_Year_Edit.getText().toString()));
-                selectedMovie.setIMDB(et_IMDB_Edit.getText().toString());
-                selectedMovie.setRating(sb_Rating_Edit.getProgress());
+                //reset the flag
+                isErrorThrown = false;
+
                 selectedMovie.setGenre(sp_Genre_Edit.getSelectedItem().toString());
 
-                Bundle sentData = new Bundle();
-                sentData.putSerializable("addedMovie",selectedMovie);
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
-                intent.putExtra(MainActivity.MOVIE_KEY, sentData);
+                Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
 
-                setResult(EditActivity.RESULT_OK, intent);
-                finish();
+                boolean specialCharDetected = regex.matcher(et_Name_Edit.getText().toString()).find();
+
+                if(et_Name_Edit.getText().toString().equals("") || specialCharDetected){
+                    et_Name_Edit.setError("Please enter a valid name.");
+                    isErrorThrown = true;
+                }else{
+                    selectedMovie.setName(et_Name_Edit.getText().toString());
+                }
+
+                if(ml_Description_Edit.getText().toString().equals("")){
+                    ml_Description_Edit.setError("Please enter a valid description");
+                    isErrorThrown = true;
+                }else{
+                    selectedMovie.setDescription(ml_Description_Edit.getText().toString());
+                }
+
+                if(et_Year_Edit.getText().toString().equals("") || et_Year_Edit.getText().toString().length() < 4 ){
+                    et_Year_Edit.setError("Year must have 4 characters.");
+                    isErrorThrown = true;
+                }else{
+                    selectedMovie.setYear(Integer.parseInt(et_Year_Edit.getText().toString()));
+                }
+
+                if (et_IMDB_Edit.getText().toString().equals("")){
+                    et_IMDB_Edit.setError("Please enter a valid IMDB.");
+                    isErrorThrown = true;
+                }else{
+                    selectedMovie.setIMDB(et_IMDB_Edit.getText().toString());
+                }
+
+                if (Integer.toString(sb_Rating_Edit.getProgress()).equals("") ||  Integer.toString(sb_Rating_Edit.getProgress()).equals("0")){
+                    Toast.makeText(EditActivity.this, "Please select a rating!", Toast.LENGTH_LONG).show();
+                    isErrorThrown = true;
+                }else{
+                    selectedMovie.setRating(sb_Rating_Edit.getProgress());
+                }
+
+                if(!isErrorThrown) {
+                    Bundle sentData = new Bundle();
+                    sentData.putSerializable("addedMovie", selectedMovie);
+                    Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                    intent.putExtra(MainActivity.MOVIE_KEY, sentData);
+
+                    setResult(EditActivity.RESULT_OK, intent);
+                    finish();
+                }
             }
         });
     }
